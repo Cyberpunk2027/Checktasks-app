@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { Paper } from "@mui/material";
 import { nanoid } from "nanoid";
+import { Reorder } from "framer-motion";
 import SortPanel from '../sortPanel/sortPanel'
 import BrightnessHighOutlinedIcon from '@mui/icons-material/BrightnessHighOutlined'
 import Brightness4OutlinedIcon from '@mui/icons-material/Brightness4Outlined';
@@ -91,17 +92,19 @@ const CardBody = () => {
                     <AppHeader onClick={toggleColorMode} value={customTheme.palette.mode === 'dark' ? <BrightnessHighOutlinedIcon/> : <Brightness4OutlinedIcon/>}/>
                     <TaskForm addTask={addTask}/>
                     <SortPanel value={value} onChange={handleChange}/>
-                    
-                    {taskItems.map((task) => {
-                        return (
-                            <TaskTabs
-                            key={task.id}
-                            task={task}                            
-                            deleteTask={deleteTask}
-                            toggleChecked={toggleChecked}
-                            />
-                        )
-                    })}
+                    <Reorder.Group axis="y" values={taskItems} onReorder={setTask}>
+                        {taskItems.map((task) => {
+                            return (
+                                <Reorder.Item value={task} key={task.id}>
+                                    <TaskTabs
+                                    task={task}                            
+                                    deleteTask={deleteTask}
+                                    toggleChecked={toggleChecked}
+                                    />
+                                </Reorder.Item>
+                            )
+                        })}
+                    </Reorder.Group>
                     <Footer/>
                 </Paper>
             </ThemeProvider>
