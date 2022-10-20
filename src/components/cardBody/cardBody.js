@@ -92,10 +92,10 @@ const CardBody = () => {
                     <AppHeader onClick={toggleColorMode} value={customTheme.palette.mode === 'dark' ? <BrightnessHighOutlinedIcon/> : <Brightness4OutlinedIcon/>}/>
                     <TaskForm addTask={addTask}/>
                     <SortPanel value={value} onChange={handleChange}/>
-                    <Reorder.Group axis="y" values={taskItems} onReorder={setTask}>
+                    <Reorder.Group style={{listStyle: "none", paddingLeft: 0}} axis="y" values={taskItems} onReorder={setTask}>
                         {taskItems.map((task) => {
                             return (
-                                <Reorder.Item value={task} key={task.id}>
+                                <Reorder.Item  value={task} key={task.id}>
                                     <TaskTabs
                                     task={task}                            
                                     deleteTask={deleteTask}

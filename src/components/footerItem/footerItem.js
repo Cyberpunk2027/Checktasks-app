@@ -5,9 +5,7 @@ import Typography from "@mui/material/Typography"
 
 const Footer = () => {
     return (
-        <Paper sx={{marginTop: 'calc(10% + 60px)',
-    width: '100%',
-    position: 'fixed',
+        <Paper sx={{ width: '100%',
     bottom: 0,
     }} component="footer" square variant="outlined">
       <Container maxWidth="lg">
@@ -17,9 +15,7 @@ const Footer = () => {
             justifyContent: "center",
             display: "flex",
             my:1
-          }}
-        >
-            
+          }}>
         </Box>
 
         <Box
@@ -30,7 +26,7 @@ const Footer = () => {
             mb: 2,
           }}
         >
-          <Typography variant="caption" color="initial">
+          <Typography variant="caption" >
             Copyright ©2022. Made by Ilia Abdelaui
           </Typography>
         </Box>
